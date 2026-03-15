@@ -1,0 +1,13 @@
+---
+import { Tweet } from 'react-tweet'
+
+interface Props {
+  ids: string[]
+}
+
+const { ids } = Astro.props
+---
+
+<div class="tweet-grid grid gap-4 md:grid-cols-2">
+  {ids.map((id) => <Tweet client:load id={id} />)}
+</div>
