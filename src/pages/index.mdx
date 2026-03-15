@@ -15,14 +15,17 @@ import TwitterTestimonials from '@/components/web/TwitterTestimonials.astro'
 
 <CommentTitle client:load text="HUMANTODO" />
 
-<a
-  class="-my-3 flex items-center justify-end gap-1 text-xs text-muted-foreground"
-  href="https://news.ycombinator.com/item?id=47391914"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <span>discuss on</span> <img src="https://news.ycombinator.com/y18.svg" alt="HN" class="h-3.5 w-auto" />
-</a>
+<p class="flex w-full items-center justify-end">
+  <a
+    class="-my-3 text-xs text-muted-foreground"
+    href="https://news.ycombinator.com/item?id=47391914"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span class="mr-1">discuss on</span>
+    <img src="https://news.ycombinator.com/y18.svg" alt="HN" class="inline-block h-3.5" />
+  </a>
+</p>
 
 More developers are adopting agents (LLMs that use tools in a loop to complete tasks) to generate code. Some claim it
 is no longer necessary to write code[^1][^2][^3][^4][^5]. Some say production stability is decreasing across the
