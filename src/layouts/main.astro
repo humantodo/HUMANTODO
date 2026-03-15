@@ -1,15 +1,85 @@
 ---
-import "@/styles/global.css"
+import '@/styles/global.css';
+import { TooltipProviderWrapper } from '@/components/web/TooltipProviderWrapper';
+import { ThemeSwitch } from '@/components/web/ThemeSwitch';
+import { siGithub } from 'simple-icons';
+import { IconLoader } from '@/components/web/IconLoader';
+import { Image } from 'astro:assets';
+import LogoPng from '@/assets/logo.png';
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Astro App</title>
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <title>HUMANTODO</title>
+    <script is:inline>
+      (() => {
+        const storageKey = 'theme';
+        const mediaQuery = '(prefers-color-scheme: dark)';
+
+        const getThemePreference = () => {
+          const storedTheme = window.localStorage.getItem(storageKey);
+
+          if (storedTheme === 'system' || storedTheme === 'light' || storedTheme === 'dark') {
+            return storedTheme;
+          }
+
+          return 'system';
+        };
+
+        const getTheme = () => {
+          const themePreference = getThemePreference();
+          if (themePreference === 'system') {
+            return window.matchMedia(mediaQuery).matches ? 'dark' : 'light';
+          }
+
+          return themePreference;
+        };
+
+        const applyTheme = () => {
+          const themePreference = getThemePreference();
+          const theme = getTheme();
+          const root = document.documentElement;
+          const isDark = theme === 'dark';
+
+          root.classList.toggle('dark', isDark);
+          root.dataset.theme = theme;
+          root.dataset.themePreference = themePreference;
+          root.style.colorScheme = theme;
+        };
+
+        applyTheme();
+        document.addEventListener('astro:after-swap', applyTheme);
+      })();
+    </script>
   </head>
   <body>
-    <slot />
+    <TooltipProviderWrapper client:load>
+      <nav class="mx-auto flex max-w-3xl items-center justify-between p-3">
+        <a href="/">
+          <Image src={LogoPng} alt="HUMANTODO logo" class="h-8 w-auto" />
+        </a>
+
+        <div class="flex items-center gap-2">
+          <ThemeSwitch client:load />
+          <a href="https://github.com/humantodo/humantodo" target="_blank" rel="noopener noreferrer">
+            <IconLoader icon={siGithub} size={22} />
+          </a>
+        </div>
+      </nav>
+
+      <div class="content-wrapper mx-auto flex min-h-svh max-w-3xl min-w-0 flex-col gap-5 p-5 leading-loose">
+        <slot />
+      </div>
+
+      <footer class="my-10">
+        <div class="flex w-full items-center justify-center text-sm text-muted-foreground">
+          <p>hello@humantodo.dev</p>
+        </div>
+      </footer>
+    </TooltipProviderWrapper>
   </body>
 </html>

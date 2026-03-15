@@ -1,0 +1,251 @@
+---
+layout: ../layouts/main.astro
+title: HUMANTODO
+---
+
+import { AgencySlider } from '@/components/web/AgencySlider';
+import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Code } from 'astro-expressive-code/components';
+import { CommentTitle } from '@/components/web/CommentTitle';
+import { CopyButton } from '@/components/web/CopyButton';
+import { Image } from 'astro:assets';
+import { InstructionTabs } from '@/components/web/InstructionTabs';
+import ikeaEffectPng from '@/assets/ikea_effect.png';
+import { ExternalLinkIcon } from 'lucide-react';
+import { FAQAccordion } from '@/components/web/FAQAccordion';
+import { AgenticFrameworkTabs } from '@/components/web/AgenticFrameworkTabs';
+
+<CommentTitle client:load text="HUMANTODO" />
+
+More developers are adopting agents (LLMs that use tools in a loop to complete tasks) to generate code. Some claim it
+is no longer necessary to write code[^1][^2][^3][^4][^5]. Some say production stability is decreasing across the
+industry[^6][^7][^8]. Some, well, just miss writing code[^9][^10].
+
+This resulted in widespread confusion about the role of the human[^11][^12]. Developers can still write code without AI,
+but we are seeing a trend in the industry where AI generates the code, and humans are becoming the **passive** code
+reviewers[^13]. If we stop hand-writing code, how will models be trained on novel code and ideas[^14][^15]?
+
+Today, it seems that the role of the human is either higher-level orchestration[^16][^17][^18], or whatever percentage
+left by the autonomous/agency level of their tools:
+
+<AgencySlider client:load />
+
+No matter which type of agents we choose, instead of letting them output 100% of the code[^19][^20], what if the agent
+leaves some of them blank for the human to complete[^21]?
+
+Like the `TODO` comments, we use `HUMANTODO` as a paradigm on how to make the human participation more **active**. By
+intentionally telling the agent to leave the gaps, we aim to solve:
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Problem</TableHead>
+      <TableHead className="wrap-break-word whitespace-normal">Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Passive vs. Active Engagement[^22]</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">
+        Reviewing code is passive (easy to skim). Writing code is active (requires deep context).
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Knowledge Retention[^23][^24]</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">
+        By forcing the human to bridge the gap between agent generated code, they must understand the why and flow
+        behind the architecture.
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Skill Preservation[^25]</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">
+        Engineers stay sharp because they are still solving the hard logic problems, while the agent handles the simple,
+        boilerplate problems.
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Reviewer's Fatigue[^26]</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">
+        Sometimes, it is just easier to write your own code than to review the agent's massive output.
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+For example, we can define within the prompts that the agent should leave 20% of the code incomplete. It can be any parts,
+maybe the most critical parts, maybe where we know the AI tends to be verbose, maybe it is a particular technology we
+want to refresh our memory on, or maybe halfway through our manual intervention, we realised it's actually unnecessary
+complexity[^27][^28][^29].
+
+Examples of different types of code for the LLM and human to complete:
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Component</TableHead>
+      <TableHead className="wrap-break-word whitespace-normal">Agent</TableHead>
+      <TableHead className="wrap-break-word whitespace-normal">Human</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>APIs</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">Auth, headers, retries, error handling, etc.</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">Map the complex business logic payload.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Database</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">Create migrations and basic CRUD operations.</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">
+        Write specific transaction queries or complex joins.
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Frontend</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">Build the UI components and layout.</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">
+        Handle the complex state management or transition logic.
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Security</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">Write the middleware wrappers.</TableCell>
+      <TableCell className="wrap-break-word whitespace-normal">Define the specific permission logic.</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+The goal of an autonomous future is efficiency and convenience. But this can be counterproductive to learning, where it
+often has to be slower, manual, and more in control[^30].
+
+<Image
+  src={ikeaEffectPng}
+  alt="Two people sitting down to build a piece of IKEA furniture"
+  class="mx-auto h-auto w-full max-w-xl rounded-lg"
+/>
+
+`HUMANTODO` is the <strong>IKEA effect</strong>, but for coding in the AI era.
+
+---
+
+Here are a few examples of how `HUMANTODO` can be implemented:
+
+## System Prompt
+
+`HUMANTODO` can be part of the system prompt, rules, or similar `AGENTS.md` files[^31]:
+
+<InstructionTabs client:load />
+
+<a href="https://github.com/humantodo/humantodo" class="flex justify-end">
+  <Button variant="outline">
+    <span>Contribute prompts</span>
+    <ExternalLinkIcon />
+  </Button>
+</a>
+
+## Agentic Framework
+
+`HUMANTODO` can act as agentic primitives within a wider system:
+
+<AgenticFrameworkTabs client:load />
+
+<a href="https://github.com/humantodo/humantodo" class="flex justify-end">
+  <Button variant="outline">
+    <span>Contribute snippets</span>
+    <ExternalLinkIcon />
+  </Button>
+</a>
+
+## FAQ
+
+<FAQAccordion
+  client:load
+  defaultOpen={['mocking']}
+  items={[
+    {
+      value: 'mocking',
+      title:
+        'Agents use tests to verify their output. If parts of the code are incomplete, how can the agent verify its own output?',
+      content:
+        'The agent can mock the test cases, and if the human does their part correctly, the system will work. This creates a contract-based development flow where the agent defines the interface and the human provides the implementation.',
+    },
+    {
+      value: 'percentage',
+      title: 'Does the human part have to be exactly 20%?',
+      content:
+        'Not at all. The 20% is just an illustration. The human contribution can be any percentage: 1%, 5%, 30%, or anything you think is appropriate. The point is that the human focuses on the parts where they add the most value, while the agent handles the rest.',
+    },
+    {
+      value: 'beyond-comments',
+      title: 'Does HUMANTODO have to be a code comment?',
+      content:
+        "No. HUMANTODO is a concept, not a syntax. It doesn't have to be a comment in code - it can be any part of the system: a step in an agentic flow, a config value, a design decision, or a manual approval gate. The key idea is that the agent builds the system with clearly marked gaps for a human to complete the missing parts.",
+    },
+  ]}
+/>
+
+Tweet/Bluesky <CopyButton text="#HUMANTODO" client:load /> and share your thoughts.
+
+[^1]: https://www.reddit.com/r/AskProgramming/comments/1jcwvwl/anthropics_ceo_says_that_in_3_to_6_months_ai_will/
+
+[^2]: https://www.itpro.com/technology/artificial-intelligence/sundar-pichai-says-more-than-25-percent-of-googles-code-is-now-generated-by-ai-and-its-a-big-hint-at-the-future-of-software-development
+
+[^3]: https://www.cnbc.com/2025/04/29/satya-nadella-says-as-much-as-30percent-of-microsoft-code-is-written-by-ai.html
+
+[^4]: https://www.techspot.com/news/107411-microsoft-cto-predicts-ai-generate-95-percent-code.html
+
+[^5]: https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/
+
+[^6]: https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/
+
+[^7]: https://mrshu.github.io/github-statuses/
+
+[^8]: https://news.ycombinator.com/item?id=47229839
+
+[^9]: https://nolanlawson.com/2026/02/07/we-mourn-our-craft/
+
+[^10]: https://www.jernesto.com/articles/thinking_hard
+
+[^11]: https://youtu.be/pzkwn3hu1Cc
+
+[^12]: https://addyosmani.com/blog/next-two-years/
+
+[^13]: https://leodemoura.github.io/blog/2026/02/28/when-ai-writes-the-worlds-software.html
+
+[^14]: https://x.com/naval/status/2028314493206585471
+
+[^15]: https://antirez.com/news/157
+
+[^16]: https://simonwillison.net/guides/agentic-engineering-patterns/
+
+[^17]: https://blog.katanaquant.com/p/your-llm-doesnt-write-correct-code
+
+[^18]: https://boristane.com/blog/how-i-use-claude-code/
+
+[^19]: https://acko.net/blog/the-l-in-llm-stands-for-lying/
+
+[^20]: https://x.com/mntruell/status/2026736314272591924
+
+[^21]: https://www.antifound.com/posts/codegen-is-not-productivity/
+
+[^22]: https://www.marginalia.nu/log/a_132_ai_bores/
+
+[^23]: https://www.rockoder.com/beyondthecode/cognitive-debt-when-velocity-exceeds-comprehension/
+
+[^24]: https://www.media.mit.edu/publications/your-brain-on-chatgpt/
+
+[^25]: https://addyosmani.com/blog/comprehension-debt/
+
+[^26]: https://www.ivanturkovic.com/2026/02/25/ai-made-writing-code-easier-engineering-harder/
+
+[^27]: https://news.ycombinator.com/item?id=36380711
+
+[^28]: https://neilmadden.blog/2024/12/03/the-square-roots-of-all-evil/
+
+[^29]: https://terriblesoftware.org/2026/03/03/nobody-gets-promoted-for-simplicity/
+
+[^30]: https://x.com/jamonholmgren/status/2032885424209932711
+
+[^31]: https://simonwillison.net/guides/agentic-engineering-patterns/prompts/
