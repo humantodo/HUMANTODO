@@ -8,9 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { CommentTitle } from '@/components/web/CommentTitle'
 import { CopyButton } from '@/components/web/CopyButton'
-import { Image } from 'astro:assets'
 import { InstructionTabs } from '@/components/web/InstructionTabs'
-import ikeaEffectPng from '@/assets/ikea_effect.png'
 import { ExternalLinkIcon } from 'lucide-react'
 import { FAQAccordion } from '@/components/web/FAQAccordion'
 import { AgenticFrameworkTabs } from '@/components/web/AgenticFrameworkTabs'
@@ -119,8 +117,8 @@ Examples of different types of code for the LLM and human to complete:
 The goal of an autonomous future is efficiency and convenience. But this can be counterproductive to learning, where it
 often has to be slower, manual, and more in control[^30].
 
-<Image
-  src={ikeaEffectPng}
+<img
+  src="/ikea_effect.png"
   alt="Two people sitting down to build a piece of IKEA furniture"
   class="mx-auto h-auto w-full max-w-xl rounded-lg"
 />

@@ -4,8 +4,6 @@ import { TooltipProviderWrapper } from '@/components/web/TooltipProviderWrapper'
 import { ThemeSwitch } from '@/components/web/ThemeSwitch'
 import { siGithub } from 'simple-icons'
 import { IconLoader } from '@/components/web/IconLoader'
-import { Image } from 'astro:assets'
-import LogoPng from '@/assets/logo.png'
 ---
 
 <html lang="en">
@@ -60,7 +58,7 @@ import LogoPng from '@/assets/logo.png'
     <TooltipProviderWrapper client:load>
       <nav class="mx-auto flex max-w-3xl items-center justify-between p-3">
         <a href="/">
-          <Image src={LogoPng} alt="HUMANTODO logo" class="h-8 w-auto" />
+          <img src="/logo.png" alt="HUMANTODO logo" class="h-8 w-auto" />
         </a>
 
         <div class="flex items-center gap-2">
