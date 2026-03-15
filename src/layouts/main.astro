@@ -4,6 +4,26 @@ import { TooltipProviderWrapper } from '@/components/web/TooltipProviderWrapper'
 import { ThemeSwitch } from '@/components/web/ThemeSwitch'
 import { siGithub } from 'simple-icons'
 import { IconLoader } from '@/components/web/IconLoader'
+
+const SITE_URL = 'https://humantodo.dev'
+
+interface Meta {
+  title?: string
+  description?: string
+  image?: string
+}
+
+interface Props extends Meta {
+  frontmatter?: Meta
+}
+
+const props = (Astro.props as Props).frontmatter ?? (Astro.props as Meta)
+const title = props.title ?? 'HUMANTODO'
+const description = props.description ?? 'HUMANTODO is the IKEA effect, but for coding in the AI era.'
+const image = props.image ?? '/ikea_effect.png'
+
+const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).href
+const imageUrl = new URL(image, SITE_URL).href
 ---
 
 <html lang="en">
@@ -12,7 +32,23 @@ import { IconLoader } from '@/components/web/IconLoader'
     <meta name="viewport" content="width=device-width" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <title>HUMANTODO</title>
+    <link rel="canonical" href={canonicalUrl} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:site_name" content="HUMANTODO" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     <script is:inline>
       ;(() => {
         const storageKey = 'theme'

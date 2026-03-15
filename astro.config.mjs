@@ -9,6 +9,8 @@ import mdx from '@astrojs/mdx'
 import cloudflare from '@astrojs/cloudflare'
 
 export default defineConfig({
+  site: 'https://humantodo.dev',
+
   image: {
     service: passthroughImageService()
   },
