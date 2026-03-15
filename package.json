@@ -41,6 +41,7 @@
     "wrangler": "4.73.0"
   },
   "devDependencies": {
+    "@astrojs/check": "0.9.7",
     "@eslint/js": "10.0.1",
     "@tailwindcss/typography": "0.5.19",
     "@typescript-eslint/parser": "8.57.0",
