@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@astrojs/cloudflare':
-        specifier: 13.1.1
-        version: 13.1.1(astro@6.0.4(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.31.1)(workerd@1.20260312.1)(wrangler@4.73.0)(yaml@2.8.2)
       '@astrojs/mdx':
         specifier: 5.0.0
         version: 5.0.0(astro@6.0.4(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(typescript@5.9.3)(yaml@2.8.2))
@@ -23,15 +20,6 @@ importers:
       '@fontsource-variable/public-sans':
         specifier: 5.2.7
         version: 5.2.7
-      '@tailwindcss/vite':
-        specifier: 4.2.1
-        version: 4.2.1(vite@7.3.1(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2))
-      '@types/react':
-        specifier: 19.2.14
-        version: 19.2.14
-      '@types/react-dom':
-        specifier: 19.2.3
-        version: 19.2.3(@types/react@19.2.14)
       astro:
         specifier: 6.0.4
         version: 6.0.4(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(typescript@5.9.3)(yaml@2.8.2)
@@ -62,34 +50,31 @@ importers:
       rehype-slug:
         specifier: 6.0.0
         version: 6.0.0
-      shadcn:
-        specifier: 4.0.8
-        version: 4.0.8(typescript@5.9.3)
       simple-icons:
         specifier: 16.12.0
         version: 16.12.0
-      tailwind-merge:
-        specifier: 3.5.0
-        version: 3.5.0
-      tailwindcss:
-        specifier: 4.2.1
-        version: 4.2.1
-      tw-animate-css:
-        specifier: 1.4.0
-        version: 1.4.0
-      wrangler:
-        specifier: 4.73.0
-        version: 4.73.0
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.7
         version: 0.9.7(prettier-plugin-astro@0.14.1)(prettier@3.8.1)(typescript@5.9.3)
+      '@astrojs/cloudflare':
+        specifier: 13.1.1
+        version: 13.1.1(astro@6.0.4(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lightningcss@1.31.1)(workerd@1.20260312.1)(wrangler@4.73.0)(yaml@2.8.2)
       '@eslint/js':
         specifier: 10.0.1
         version: 10.0.1(eslint@10.0.3(jiti@2.6.1))
       '@tailwindcss/typography':
         specifier: 0.5.19
         version: 0.5.19(tailwindcss@4.2.1)
+      '@tailwindcss/vite':
+        specifier: 4.2.1
+        version: 4.2.1(vite@7.3.1(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2))
+      '@types/react':
+        specifier: 19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: 19.2.3
+        version: 19.2.3(@types/react@19.2.14)
       '@typescript-eslint/parser':
         specifier: 8.57.0
         version: 8.57.0(eslint@10.0.3(jiti@2.6.1))(typescript@5.9.3)
@@ -120,12 +105,27 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: 0.7.2
         version: 0.7.2(prettier-plugin-astro@0.14.1)(prettier@3.8.1)
+      shadcn:
+        specifier: 4.0.8
+        version: 4.0.8(typescript@5.9.3)
+      tailwind-merge:
+        specifier: 3.5.0
+        version: 3.5.0
+      tailwindcss:
+        specifier: 4.2.1
+        version: 4.2.1
+      tw-animate-css:
+        specifier: 1.4.0
+        version: 1.4.0
       typescript:
         specifier: 5.9.3
         version: 5.9.3
       typescript-eslint:
         specifier: 8.57.0
         version: 8.57.0(eslint@10.0.3(jiti@2.6.1))(typescript@5.9.3)
+      wrangler:
+        specifier: 4.73.0
+        version: 4.73.0
 
 packages:
 
