@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 import {
   getThemePreference,
   syncThemeFromPreference,
@@ -8,70 +8,70 @@ import {
   SYSTEM_THEME_MEDIA_QUERY,
   THEME_CHANGE_EVENT,
   THEME_STORAGE_KEY,
-  type ThemePreference,
-} from '@/lib/theme';
-import { cn } from '@/lib/utils';
-import { LaptopIcon, MoonIcon, SunIcon } from 'lucide-react';
+  type ThemePreference
+} from '@/lib/theme'
+import { cn } from '@/lib/utils'
+import { LaptopIcon, MoonIcon, SunIcon } from 'lucide-react'
 
 const THEME_OPTIONS: { value: ThemePreference; label: string; icon: typeof LaptopIcon }[] = [
   { value: 'system', label: 'System', icon: LaptopIcon },
   { value: 'light', label: 'Light', icon: SunIcon },
-  { value: 'dark', label: 'Dark', icon: MoonIcon },
-];
+  { value: 'dark', label: 'Dark', icon: MoonIcon }
+]
 
 function getInitialThemePreference(): ThemePreference {
   if (typeof document === 'undefined') {
-    return 'system';
+    return 'system'
   }
 
-  const themePreference = document.documentElement.dataset.themePreference;
+  const themePreference = document.documentElement.dataset.themePreference
   return themePreference === 'system' || themePreference === 'light' || themePreference === 'dark'
     ? themePreference
-    : getThemePreference();
+    : getThemePreference()
 }
 
 export function ThemeSwitch() {
-  const [themePreference, setThemePreferenceState] = useState<ThemePreference>(getInitialThemePreference);
+  const [themePreference, setThemePreferenceState] = useState<ThemePreference>(getInitialThemePreference)
 
   useEffect(() => {
     const syncPreference = () => {
-      setThemePreferenceState(getThemePreference());
-    };
+      setThemePreferenceState(getThemePreference())
+    }
 
     const handleThemeChange = () => {
-      syncPreference();
-    };
+      syncPreference()
+    }
 
     const handleStorage = (event: StorageEvent) => {
       if (event.key !== null && event.key !== THEME_STORAGE_KEY) {
-        return;
+        return
       }
 
-      syncThemeFromPreference();
-      syncPreference();
-    };
+      syncThemeFromPreference()
+      syncPreference()
+    }
 
-    const mediaQuery = window.matchMedia(SYSTEM_THEME_MEDIA_QUERY);
+    const mediaQuery = window.matchMedia(SYSTEM_THEME_MEDIA_QUERY)
     const handleMediaChange = () => {
       if (getThemePreference() !== 'system') {
-        return;
+        return
       }
 
-      syncThemeFromPreference();
-      syncPreference();
-    };
+      syncThemeFromPreference()
+      syncPreference()
+    }
 
-    syncPreference();
-    window.addEventListener(THEME_CHANGE_EVENT, handleThemeChange);
-    window.addEventListener('storage', handleStorage);
-    mediaQuery.addEventListener('change', handleMediaChange);
+    syncPreference()
+    window.addEventListener(THEME_CHANGE_EVENT, handleThemeChange)
+    window.addEventListener('storage', handleStorage)
+    mediaQuery.addEventListener('change', handleMediaChange)
 
     return () => {
-      window.removeEventListener(THEME_CHANGE_EVENT, handleThemeChange);
-      window.removeEventListener('storage', handleStorage);
-      mediaQuery.removeEventListener('change', handleMediaChange);
-    };
-  }, []);
+      window.removeEventListener(THEME_CHANGE_EVENT, handleThemeChange)
+      window.removeEventListener('storage', handleStorage)
+      mediaQuery.removeEventListener('change', handleMediaChange)
+    }
+  }, [])
 
   return (
     <div
@@ -80,7 +80,7 @@ export function ThemeSwitch() {
       className="inline-flex items-center rounded-4xl border border-border bg-input/30 p-1"
     >
       {THEME_OPTIONS.map(({ value, label, icon: Icon }) => {
-        const isActive = themePreference === value;
+        const isActive = themePreference === value
 
         return (
           <Button
@@ -96,14 +96,14 @@ export function ThemeSwitch() {
               !isActive && 'hover:text-foreground'
             )}
             onClick={() => {
-              setThemePreferenceState(value);
-              setThemePreference(value);
+              setThemePreferenceState(value)
+              setThemePreference(value)
             }}
           >
             <Icon size={14} />
           </Button>
-        );
+        )
       })}
     </div>
-  );
+  )
 }

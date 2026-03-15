@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 function Card({ className, size = 'default', ...props }: React.ComponentProps<'div'> & { size?: 'default' | 'sm' }) {
   return (
@@ -13,7 +13,7 @@ function Card({ className, size = 'default', ...props }: React.ComponentProps<'d
       )}
       {...props}
     />
-  );
+  )
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
@@ -26,15 +26,15 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
       )}
       {...props}
     />
-  );
+  )
 }
 
 function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div data-slot="card-title" className={cn('text-base font-medium', className)} {...props} />;
+  return <div data-slot="card-title" className={cn('text-base font-medium', className)} {...props} />
 }
 
 function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div data-slot="card-description" className={cn('text-sm text-muted-foreground', className)} {...props} />;
+  return <div data-slot="card-description" className={cn('text-sm text-muted-foreground', className)} {...props} />
 }
 
 function CardAction({ className, ...props }: React.ComponentProps<'div'>) {
@@ -44,11 +44,11 @@ function CardAction({ className, ...props }: React.ComponentProps<'div'>) {
       className={cn('col-start-2 row-span-2 row-start-1 self-start justify-self-end', className)}
       {...props}
     />
-  );
+  )
 }
 
 function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div data-slot="card-content" className={cn('px-6 group-data-[size=sm]/card:px-4', className)} {...props} />;
+  return <div data-slot="card-content" className={cn('px-6 group-data-[size=sm]/card:px-4', className)} {...props} />
 }
 
 function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
@@ -61,7 +61,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
       )}
       {...props}
     />
-  );
+  )
 }
 
-export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent };
+export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent }

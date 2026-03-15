@@ -1,15 +1,15 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
 export interface FAQItem {
-  value: string;
-  title: string;
-  content: string;
+  value: string
+  title: string
+  content: string
 }
 
 interface FAQAccordionProps {
-  items: FAQItem[];
-  defaultOpen?: string[];
-  className?: string;
+  items: FAQItem[]
+  defaultOpen?: string[]
+  className?: string
 }
 
 export function FAQAccordion({ items, defaultOpen = [], className }: FAQAccordionProps) {
@@ -22,5 +22,5 @@ export function FAQAccordion({ items, defaultOpen = [], className }: FAQAccordio
         </AccordionItem>
       ))}
     </Accordion>
-  );
+  )
 }

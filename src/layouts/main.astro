@@ -1,11 +1,11 @@
 ---
-import '@/styles/global.css';
-import { TooltipProviderWrapper } from '@/components/web/TooltipProviderWrapper';
-import { ThemeSwitch } from '@/components/web/ThemeSwitch';
-import { siGithub } from 'simple-icons';
-import { IconLoader } from '@/components/web/IconLoader';
-import { Image } from 'astro:assets';
-import LogoPng from '@/assets/logo.png';
+import '@/styles/global.css'
+import { TooltipProviderWrapper } from '@/components/web/TooltipProviderWrapper'
+import { ThemeSwitch } from '@/components/web/ThemeSwitch'
+import { siGithub } from 'simple-icons'
+import { IconLoader } from '@/components/web/IconLoader'
+import { Image } from 'astro:assets'
+import LogoPng from '@/assets/logo.png'
 ---
 
 <html lang="en">
@@ -16,44 +16,44 @@ import LogoPng from '@/assets/logo.png';
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <title>HUMANTODO</title>
     <script is:inline>
-      (() => {
-        const storageKey = 'theme';
-        const mediaQuery = '(prefers-color-scheme: dark)';
+      ;(() => {
+        const storageKey = 'theme'
+        const mediaQuery = '(prefers-color-scheme: dark)'
 
         const getThemePreference = () => {
-          const storedTheme = window.localStorage.getItem(storageKey);
+          const storedTheme = window.localStorage.getItem(storageKey)
 
           if (storedTheme === 'system' || storedTheme === 'light' || storedTheme === 'dark') {
-            return storedTheme;
+            return storedTheme
           }
 
-          return 'system';
-        };
+          return 'system'
+        }
 
         const getTheme = () => {
-          const themePreference = getThemePreference();
+          const themePreference = getThemePreference()
           if (themePreference === 'system') {
-            return window.matchMedia(mediaQuery).matches ? 'dark' : 'light';
+            return window.matchMedia(mediaQuery).matches ? 'dark' : 'light'
           }
 
-          return themePreference;
-        };
+          return themePreference
+        }
 
         const applyTheme = () => {
-          const themePreference = getThemePreference();
-          const theme = getTheme();
-          const root = document.documentElement;
-          const isDark = theme === 'dark';
+          const themePreference = getThemePreference()
+          const theme = getTheme()
+          const root = document.documentElement
+          const isDark = theme === 'dark'
 
-          root.classList.toggle('dark', isDark);
-          root.dataset.theme = theme;
-          root.dataset.themePreference = themePreference;
-          root.style.colorScheme = theme;
-        };
+          root.classList.toggle('dark', isDark)
+          root.dataset.theme = theme
+          root.dataset.themePreference = themePreference
+          root.style.colorScheme = theme
+        }
 
-        applyTheme();
-        document.addEventListener('astro:after-swap', applyTheme);
-      })();
+        applyTheme()
+        document.addEventListener('astro:after-swap', applyTheme)
+      })()
     </script>
   </head>
   <body>

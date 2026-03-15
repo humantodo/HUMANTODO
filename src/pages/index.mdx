@@ -3,18 +3,18 @@ layout: ../layouts/main.astro
 title: HUMANTODO
 ---
 
-import { AgencySlider } from '@/components/web/AgencySlider';
-import { Button } from '@/components/ui/button';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Code } from 'astro-expressive-code/components';
-import { CommentTitle } from '@/components/web/CommentTitle';
-import { CopyButton } from '@/components/web/CopyButton';
-import { Image } from 'astro:assets';
-import { InstructionTabs } from '@/components/web/InstructionTabs';
-import ikeaEffectPng from '@/assets/ikea_effect.png';
-import { ExternalLinkIcon } from 'lucide-react';
-import { FAQAccordion } from '@/components/web/FAQAccordion';
-import { AgenticFrameworkTabs } from '@/components/web/AgenticFrameworkTabs';
+import { AgencySlider } from '@/components/web/AgencySlider'
+import { Button } from '@/components/ui/button'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Code } from 'astro-expressive-code/components'
+import { CommentTitle } from '@/components/web/CommentTitle'
+import { CopyButton } from '@/components/web/CopyButton'
+import { Image } from 'astro:assets'
+import { InstructionTabs } from '@/components/web/InstructionTabs'
+import ikeaEffectPng from '@/assets/ikea_effect.png'
+import { ExternalLinkIcon } from 'lucide-react'
+import { FAQAccordion } from '@/components/web/FAQAccordion'
+import { AgenticFrameworkTabs } from '@/components/web/AgenticFrameworkTabs'
 
 <CommentTitle client:load text="HUMANTODO" />
 
@@ -169,20 +169,20 @@ Here are a few examples of how `HUMANTODO` can be implemented:
       title:
         'Agents use tests to verify their output. If parts of the code are incomplete, how can the agent verify its own output?',
       content:
-        'The agent can mock the test cases, and if the human does their part correctly, the system will work. This creates a contract-based development flow where the agent defines the interface and the human provides the implementation.',
+        'The agent can mock the test cases, and if the human does their part correctly, the system will work. This creates a contract-based development flow where the agent defines the interface and the human provides the implementation.'
     },
     {
       value: 'percentage',
       title: 'Does the human part have to be exactly 20%?',
       content:
-        'Not at all. The 20% is just an illustration. The human contribution can be any percentage: 1%, 5%, 30%, or anything you think is appropriate. The point is that the human focuses on the parts where they add the most value, while the agent handles the rest.',
+        'Not at all. The 20% is just an illustration. The human contribution can be any percentage: 1%, 5%, 30%, or anything you think is appropriate. The point is that the human focuses on the parts where they add the most value, while the agent handles the rest.'
     },
     {
       value: 'beyond-comments',
       title: 'Does HUMANTODO have to be a code comment?',
       content:
-        "No. HUMANTODO is a concept, not a syntax. It doesn't have to be a comment in code - it can be any part of the system: a step in an agentic flow, a config value, a design decision, or a manual approval gate. The key idea is that the agent builds the system with clearly marked gaps for a human to complete the missing parts.",
-    },
+        "No. HUMANTODO is a concept, not a syntax. It doesn't have to be a comment in code - it can be any part of the system: a step in an agentic flow, a config value, a design decision, or a manual approval gate. The key idea is that the agent builds the system with clearly marked gaps for a human to complete the missing parts."
+    }
   ]}
 />
 

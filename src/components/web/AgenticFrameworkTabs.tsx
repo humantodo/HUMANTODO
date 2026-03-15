@@ -1,11 +1,11 @@
-import { Button } from '@/components/ui/button';
-import { BrandIcon } from '@/components/web/BrandIcon';
-import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CheckIcon, CopyIcon } from 'lucide-react';
-import { siVercel } from 'simple-icons';
-import { Highlight, themes } from 'prism-react-renderer';
-import { IconLoader } from './IconLoader';
+import { Button } from '@/components/ui/button'
+import { BrandIcon } from '@/components/web/BrandIcon'
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { CheckIcon, CopyIcon } from 'lucide-react'
+import { siVercel } from 'simple-icons'
+import { Highlight, themes } from 'prism-react-renderer'
+import { IconLoader } from './IconLoader'
 
 const AI_SDK_CODE = `import { ToolLoopAgent } from "ai";
 
@@ -30,7 +30,7 @@ const result = await humantodoAgent.generate({
   prompt: "Build a React auth hook with login, logout, and session refresh.",
 });
 
-console.log(result.text);`;
+console.log(result.text);`
 
 const MASTRA_CODE = `import { anthropic } from "@ai-sdk/anthropic";
 import { Agent } from "@mastra/core/agent";
@@ -57,7 +57,7 @@ const result = await humantodoAgent.generate(
   "Build a React auth hook with login, logout, and session refresh.",
 );
 
-console.log(result.text);`;
+console.log(result.text);`
 
 function CodeBlock({ code, onCopy, isCopied }: { code: string; onCopy: () => void; isCopied: boolean }) {
   return (
@@ -85,11 +85,11 @@ function CodeBlock({ code, onCopy, isCopied }: { code: string; onCopy: () => voi
         )}
       </Highlight>
     </div>
-  );
+  )
 }
 
 export function AgenticFrameworkTabs() {
-  const { copyToClipboard, isCopied } = useCopyToClipboard();
+  const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
     <Tabs defaultValue="ai-sdk">
@@ -116,5 +116,5 @@ export function AgenticFrameworkTabs() {
         <CodeBlock code={MASTRA_CODE} onCopy={() => copyToClipboard(MASTRA_CODE)} isCopied={isCopied} />
       </TabsContent>
     </Tabs>
-  );
+  )
 }

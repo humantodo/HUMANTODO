@@ -1,21 +1,21 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { BrandIcon } from '@/components/web/BrandIcon';
-import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
-import { IconLoader } from '@/components/web/IconLoader';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CheckIcon, CopyIcon } from 'lucide-react';
-import { siCursor, siClaude, siZedindustries } from 'simple-icons';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { BrandIcon } from '@/components/web/BrandIcon'
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
+import { IconLoader } from '@/components/web/IconLoader'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { CheckIcon, CopyIcon } from 'lucide-react'
+import { siCursor, siClaude, siZedindustries } from 'simple-icons'
 
 type PromptSection =
   | { type: 'paragraph'; text: string }
   | { type: 'unordered-list'; items: string[] }
-  | { type: 'ordered-list'; items: string[] };
+  | { type: 'ordered-list'; items: string[] }
 
 const PROMPT_CONTENT: PromptSection[] = [
   {
     type: 'paragraph',
-    text: 'Role: You are a helpful assistant that helps with coding tasks. Your goal is to help the developer be more productive while preventing the developer from being a passive code reviewer. You do this by completing the majority of the code for the required tasks, and strategically leaving the critical parts of the code for the developer to complete.',
+    text: 'Role: You are a helpful assistant that helps with coding tasks. Your goal is to help the developer be more productive while preventing the developer from being a passive code reviewer. You do this by completing the majority of the code for the required tasks, and strategically leaving the critical parts of the code for the developer to complete.'
   },
   { type: 'paragraph', text: 'Your methodology:' },
   {
@@ -25,12 +25,12 @@ const PROMPT_CONTENT: PromptSection[] = [
       'Generate the scaffold: write the surrounding code. Ensure the code is syntactically correct except for the designated critical parts.',
       'The critical parts: insert comment blocks labelled with "HUMANTODO" (e.g. "// HUMANTODO: [description]") just like you would do with a TODO comment.',
       'Describe the intent and the expected outcome of the missing code. Provide the function signature but leave the body empty (or return a "Not Implemented" placeholder).',
-      'You can use tests to ensure the overall feature is working as expected. For the missing code, provide mock implementations within the test files. This proves the overall feature works if the developer completes the missing part of the contract.',
-    ],
+      'You can use tests to ensure the overall feature is working as expected. For the missing code, provide mock implementations within the test files. This proves the overall feature works if the developer completes the missing part of the contract.'
+    ]
   },
   {
     type: 'paragraph',
-    text: 'For example, you can apply the 80/20 rule: you write most of the code; reserve the 20% that demands human judgment for HUMANTODO. Examples of what to complete vs. leave:',
+    text: 'For example, you can apply the 80/20 rule: you write most of the code; reserve the 20% that demands human judgment for HUMANTODO. Examples of what to complete vs. leave:'
   },
   {
     type: 'unordered-list',
@@ -39,27 +39,27 @@ const PROMPT_CONTENT: PromptSection[] = [
       'Leave for developer: business rules, complex state, security decisions, non-trivial data transforms.',
       'Prefer logic over plumbing, e.g. write the DB connection, leave the “what to persist” logic.',
       'Prefer state over UI, e.g. build the component and styles, leave tricky useEffect or reducer logic.',
-      'Prefer security intent over syntax, e.g. write the middleware, leave the concrete permission checks.',
-    ],
-  },
-];
+      'Prefer security intent over syntax, e.g. write the middleware, leave the concrete permission checks.'
+    ]
+  }
+]
 
 function promptToPlainText(sections: PromptSection[]): string {
   return sections
     .map((section) => {
-      if (section.type === 'paragraph') return section.text;
-      if (section.type === 'unordered-list') return section.items.map((item) => `- ${item}`).join('\n');
-      if (section.type === 'ordered-list') return section.items.map((item, i) => `${i + 1}. ${item}`).join('\n');
-      return '';
+      if (section.type === 'paragraph') return section.text
+      if (section.type === 'unordered-list') return section.items.map((item) => `- ${item}`).join('\n')
+      if (section.type === 'ordered-list') return section.items.map((item, i) => `${i + 1}. ${item}`).join('\n')
+      return ''
     })
-    .join('\n\n');
+    .join('\n\n')
 }
 
 function promptToJSX(sections: PromptSection[]) {
   return (
     <>
       {sections.map((section, i) => {
-        if (section.type === 'paragraph') return <p key={i}>{section.text}</p>;
+        if (section.type === 'paragraph') return <p key={i}>{section.text}</p>
         if (section.type === 'unordered-list')
           return (
             <ul key={i} className="mb-2 list-inside list-disc">
@@ -67,7 +67,7 @@ function promptToJSX(sections: PromptSection[]) {
                 <li key={j}>{item}</li>
               ))}
             </ul>
-          );
+          )
         if (section.type === 'ordered-list')
           return (
             <ol key={i} className="mb-2 list-inside list-decimal">
@@ -75,15 +75,15 @@ function promptToJSX(sections: PromptSection[]) {
                 <li key={j}>{item}</li>
               ))}
             </ol>
-          );
-        return null;
+          )
+        return null
       })}
     </>
-  );
+  )
 }
 
 export function InstructionTabs() {
-  const { copyToClipboard, isCopied } = useCopyToClipboard();
+  const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
     <Tabs defaultValue="cursor" className="w-full">
@@ -272,5 +272,5 @@ export function InstructionTabs() {
         </Card>
       </TabsContent>
     </Tabs>
-  );
+  )
 }

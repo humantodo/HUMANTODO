@@ -1,16 +1,18 @@
 // @ts-check
-import tailwindcss from '@tailwindcss/vite';
-import { defineConfig, passthroughImageService } from 'astro/config';
-import react from '@astrojs/react';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import expressiveCode from 'astro-expressive-code';
-import mdx from '@astrojs/mdx';
+import tailwindcss from '@tailwindcss/vite'
+import { defineConfig, passthroughImageService } from 'astro/config'
+import react from '@astrojs/react'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import expressiveCode from 'astro-expressive-code'
+import mdx from '@astrojs/mdx'
+import cloudflare from '@astrojs/cloudflare'
 
 export default defineConfig({
   image: {
-    service: passthroughImageService(),
+    service: passthroughImageService()
   },
+
   markdown: {
     rehypePlugins: [
       rehypeSlug,
@@ -19,17 +21,20 @@ export default defineConfig({
         {
           behavior: 'wrap',
           headingProperties: {
-            className: ['rehype-heading'],
+            className: ['rehype-heading']
           },
           properties: {
-            className: ['rehype-heading-link'],
-          },
-        },
-      ],
-    ],
+            className: ['rehype-heading-link']
+          }
+        }
+      ]
+    ]
   },
+
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss()]
   },
+
   integrations: [react(), expressiveCode(), mdx()],
-});
+  adapter: cloudflare()
+})

@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 const COMMENT_STYLES = [
   { prefix: '// ', suffix: '' },
   { prefix: '# ', suffix: '' },
   { prefix: '-- ', suffix: '' },
   { prefix: '/* ', suffix: ' */' },
-  { prefix: '<!-- ', suffix: ' -->' },
-] as const;
+  { prefix: '<!-- ', suffix: ' -->' }
+] as const
 
 export function CommentTitle({ text = 'HUMANTODO' }: { text?: string }) {
-  const [styleIndex, setStyleIndex] = useState(0);
-  const { prefix, suffix } = COMMENT_STYLES[styleIndex];
-  const length = COMMENT_STYLES.length;
+  const [styleIndex, setStyleIndex] = useState(0)
+  const { prefix, suffix } = COMMENT_STYLES[styleIndex]
+  const length = COMMENT_STYLES.length
 
   return (
     <h1
@@ -24,5 +24,5 @@ export function CommentTitle({ text = 'HUMANTODO' }: { text?: string }) {
       {text}
       {suffix}
     </h1>
-  );
+  )
 }
