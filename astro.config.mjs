@@ -7,10 +7,13 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import expressiveCode from 'astro-expressive-code';
 import mdx from '@astrojs/mdx';
 
+import cloudflare from '@astrojs/cloudflare';
+
 export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
+
   markdown: {
     rehypePlugins: [
       rehypeSlug,
@@ -28,8 +31,11 @@ export default defineConfig({
       ],
     ],
   },
+
   vite: {
     plugins: [tailwindcss()],
   },
+
   integrations: [react(), expressiveCode(), mdx()],
+  adapter: cloudflare(),
 });
