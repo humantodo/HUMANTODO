@@ -159,9 +159,9 @@
 }
 
 .content-wrapper .footnotes ol {
-  @apply list-decimal text-xs;
+  @apply list-decimal px-6 text-xs;
 }
 
 .content-wrapper .footnotes p {
-  @apply text-xs;
+  @apply text-xs break-words;
 }
