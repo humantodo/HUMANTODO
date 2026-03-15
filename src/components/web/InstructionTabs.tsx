@@ -4,7 +4,9 @@ import { BrandIcon } from '@/components/web/BrandIcon'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { IconLoader } from '@/components/web/IconLoader'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { trackEvent } from '@/lib/analytics'
 import { CheckIcon, CopyIcon } from 'lucide-react'
+import { useState } from 'react'
 import { siCursor, siClaude, siZedindustries } from 'simple-icons'
 
 type PromptSection =
@@ -82,11 +84,30 @@ function promptToJSX(sections: PromptSection[]) {
   )
 }
 
+const INSTRUCTION_TAB_LABELS = {
+  cursor: 'Cursor',
+  'claude-code': 'Claude Code',
+  codex: 'Codex',
+  zed: 'Zed',
+  'vs-code': 'VS Code'
+} as const
+
 export function InstructionTabs() {
-  const { copyToClipboard, isCopied } = useCopyToClipboard()
+  const [activeTab, setActiveTab] = useState<keyof typeof INSTRUCTION_TAB_LABELS>('cursor')
+  const { copyToClipboard, isCopied } = useCopyToClipboard({
+    onCopy: () => trackEvent(`Homepage: Prompt Copied - ${INSTRUCTION_TAB_LABELS[activeTab]}`)
+  })
 
   return (
-    <Tabs defaultValue="cursor" className="w-full">
+    <Tabs
+      defaultValue="cursor"
+      className="w-full"
+      onValueChange={(value) => {
+        const nextValue = value as keyof typeof INSTRUCTION_TAB_LABELS
+        setActiveTab(nextValue)
+        trackEvent(`Homepage: Instruction Tab Selected - ${INSTRUCTION_TAB_LABELS[nextValue]}`)
+      }}
+    >
       <TabsList className="w-full overflow-x-auto">
         <TabsTrigger value="cursor">
           <span className="inline-flex items-center gap-1">

@@ -4,14 +4,13 @@ title: HUMANTODO
 ---
 
 import { AgencySlider } from '@/components/web/AgencySlider'
-import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { CommentTitle } from '@/components/web/CommentTitle'
 import { CopyButton } from '@/components/web/CopyButton'
 import { InstructionTabs } from '@/components/web/InstructionTabs'
-import { ExternalLinkIcon } from 'lucide-react'
 import { FAQAccordion } from '@/components/web/FAQAccordion'
 import { AgenticFrameworkTabs } from '@/components/web/AgenticFrameworkTabs'
+import { LinkButton } from '@/components/web/LinkButton'
 import TwitterTestimonials from '@/components/web/TwitterTestimonials.astro'
 
 <CommentTitle client:load text="HUMANTODO" />
@@ -136,12 +135,14 @@ Here are a few examples of how `HUMANTODO` can be implemented:
 
 <InstructionTabs client:load />
 
-<a href="https://github.com/humantodo/humantodo/blob/main/CONTRIBUTING.md" class="flex justify-end">
-  <Button variant="outline">
-    <span>Contribute prompts</span>
-    <ExternalLinkIcon />
-  </Button>
-</a>
+<LinkButton
+  client:load
+  href="https://github.com/humantodo/humantodo/blob/main/CONTRIBUTING.md"
+  eventName="Homepage: Contribute Prompts Clicked"
+  className="flex justify-end"
+>
+  Contribute prompts
+</LinkButton>
 
 ## Agentic Framework
 
@@ -149,12 +150,14 @@ Here are a few examples of how `HUMANTODO` can be implemented:
 
 <AgenticFrameworkTabs client:load />
 
-<a href="https://github.com/humantodo/humantodo/blob/main/CONTRIBUTING.md" class="flex justify-end">
-  <Button variant="outline">
-    <span>Contribute snippets</span>
-    <ExternalLinkIcon />
-  </Button>
-</a>
+<LinkButton
+  client:load
+  href="https://github.com/humantodo/humantodo/blob/main/CONTRIBUTING.md"
+  eventName="Homepage: Contribute Snippets Clicked"
+  className="flex justify-end"
+>
+  Contribute snippets
+</LinkButton>
 
 ## FAQ
 
@@ -184,7 +187,7 @@ Here are a few examples of how `HUMANTODO` can be implemented:
   ]}
 />
 
-Tweet/Bluesky <CopyButton text="#HUMANTODO" client:load /> and share your thoughts.
+Tweet/Bluesky <CopyButton text="#HUMANTODO" eventName="Homepage: Hashtag Copied" client:load /> and share your thoughts.
 
 <TwitterTestimonials ids={['2033276854346629174']} />
 

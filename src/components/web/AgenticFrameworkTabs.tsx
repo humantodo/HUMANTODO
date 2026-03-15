@@ -2,9 +2,11 @@ import { Button } from '@/components/ui/button'
 import { BrandIcon } from '@/components/web/BrandIcon'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { trackEvent } from '@/lib/analytics'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import { siVercel } from 'simple-icons'
 import { Highlight, themes } from 'prism-react-renderer'
+import { useState } from 'react'
 import { IconLoader } from './IconLoader'
 
 const AI_SDK_CODE = `import { ToolLoopAgent } from "ai";
@@ -88,11 +90,26 @@ function CodeBlock({ code, onCopy, isCopied }: { code: string; onCopy: () => voi
   )
 }
 
+const FRAMEWORK_TAB_LABELS = {
+  'ai-sdk': 'AI SDK',
+  mastra: 'Mastra'
+} as const
+
 export function AgenticFrameworkTabs() {
-  const { copyToClipboard, isCopied } = useCopyToClipboard()
+  const [activeTab, setActiveTab] = useState<keyof typeof FRAMEWORK_TAB_LABELS>('ai-sdk')
+  const { copyToClipboard, isCopied } = useCopyToClipboard({
+    onCopy: () => trackEvent(`Homepage: Framework Snippet Copied - ${FRAMEWORK_TAB_LABELS[activeTab]}`)
+  })
 
   return (
-    <Tabs defaultValue="ai-sdk">
+    <Tabs
+      defaultValue="ai-sdk"
+      onValueChange={(value) => {
+        const nextValue = value as keyof typeof FRAMEWORK_TAB_LABELS
+        setActiveTab(nextValue)
+        trackEvent(`Homepage: Framework Tab Selected - ${FRAMEWORK_TAB_LABELS[nextValue]}`)
+      }}
+    >
       <TabsList className="w-full overflow-x-auto">
         <TabsTrigger value="ai-sdk">
           <span className="inline-flex items-center gap-1">
