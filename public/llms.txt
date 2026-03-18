@@ -1,0 +1,59 @@
+# HUMANTODO
+
+> The IKEA effect, but for coding in the AI era.
+
+Source: https://humantodo.dev
+Repository: https://github.com/humantodo/humantodo
+
+## What is HUMANTODO?
+
+HUMANTODO is a paradigm for human-AI collaboration in software development.
+When AI agents write code, they should intentionally leave critical parts for
+the human to complete - marked with `// HUMANTODO:` comments. This keeps the
+human actively engaged instead of being a passive code reviewer.
+
+Instead of letting agents output 100% of the code, the agent leaves strategic
+gaps for the human to fill in. Think of it like the IKEA effect: people value
+things more when they help build them.
+
+## Problems it solves
+
+1. Passive vs. Active Engagement
+   Reviewing code is passive (easy to skim). Writing code is active (requires
+   deep context). HUMANTODO forces active participation.
+
+2. Knowledge Retention
+   By forcing the human to bridge the gap between agent-generated code, they
+   must understand the "why" and flow behind the architecture.
+
+3. Skill Preservation
+   Engineers stay sharp because they are still solving the hard logic problems,
+   while the agent handles the simple, boilerplate problems.
+
+4. Reviewer's Fatigue
+   Sometimes it is just easier to write your own code than to review the
+   agent's massive output.
+
+## Division of work
+
+The agent writes most of the code; the human completes the critical parts.
+For example:
+
+Component  | Agent writes                              | Human completes
+-----------|-------------------------------------------|------------------------------------------
+APIs       | Auth, headers, retries, error handling     | Complex business logic payload
+Database   | Migrations and basic CRUD operations       | Transaction queries, complex joins
+Frontend   | UI components and layout                   | Complex state management, transition logic
+Security   | Middleware wrappers                        | Specific permission logic
+
+General heuristics:
+- Complete: boilerplate, imports, standard APIs, types, basic CRUD.
+- Leave for human: business rules, complex state, security decisions, non-trivial data transforms.
+- Prefer logic over plumbing — write the DB connection, leave the "what to persist" logic.
+- Prefer state over UI — build the component and styles, leave tricky useEffect or reducer logic.
+- Prefer security intent over syntax — write the middleware, leave the concrete permission checks.
+
+By default, apply the 80/20 rule: the agent writes ~80% of the code, and reserves
+~20% that demands human judgement for HUMANTODO. But the percentage is flexible, 
+it can be 1%, 5%, 30%, or anything appropriate. The point is that the human
+focuses on the parts where they add the most value.
