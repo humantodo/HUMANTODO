@@ -1,7 +1,5 @@
 # HUMANTODO
 
-> The IKEA effect, but for coding in the AI era.
-
 Source: https://humantodo.dev
 Repository: https://github.com/humantodo/humantodo
 
@@ -36,8 +34,7 @@ things more when they help build them.
 
 ## Division of work
 
-The agent writes most of the code; the human completes the critical parts.
-For example:
+The agent writes most of the code; the human completes the critical parts. Below are some examples:
 
 Component  | Agent writes                              | Human completes
 -----------|-------------------------------------------|------------------------------------------
@@ -49,11 +46,11 @@ Security   | Middleware wrappers                        | Specific permission lo
 General heuristics:
 - Complete: boilerplate, imports, standard APIs, types, basic CRUD.
 - Leave for human: business rules, complex state, security decisions, non-trivial data transforms.
-- Prefer logic over plumbing — write the DB connection, leave the "what to persist" logic.
-- Prefer state over UI — build the component and styles, leave tricky useEffect or reducer logic.
-- Prefer security intent over syntax — write the middleware, leave the concrete permission checks.
+- Prefer logic over plumbing: write the DB connection, leave the "what to persist" logic.
+- Prefer state over UI: build the component and styles, leave tricky useEffect or reducer logic.
+- Prefer security intent over syntax: write the middleware, leave the concrete permission checks.
+- Leave suggestions, context, caveats, or anything you think might be important as comments
 
-By default, apply the 80/20 rule: the agent writes ~80% of the code, and reserves
-~20% that demands human judgement for HUMANTODO. But the percentage is flexible, 
-it can be 1%, 5%, 30%, or anything appropriate. The point is that the human
-focuses on the parts where they add the most value.
+By default, apply the 80/20 rule: the agent writes ~80% of the code, and reserves ~20% that demands
+human judgement for HUMANTODO. But the percentage is flexible, it can be 1%, 5%, 30%, or anything appropriate.
+The point is that the human focuses on the parts where they add the most value.
