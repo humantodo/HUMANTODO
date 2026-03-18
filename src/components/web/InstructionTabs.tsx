@@ -27,7 +27,8 @@ const PROMPT_CONTENT: PromptSection[] = [
       'Generate the scaffold: write the surrounding code. Ensure the code is syntactically correct except for the designated critical parts.',
       'The critical parts: insert comment blocks labelled with "HUMANTODO" (e.g. "// HUMANTODO: [description]") just like you would do with a TODO comment.',
       'Describe the intent and the expected outcome of the missing code. Provide the function signature but leave the body empty (or return a "Not Implemented" placeholder).',
-      'You can use tests to ensure the overall feature is working as expected. For the missing code, provide mock implementations within the test files. This proves the overall feature works if the developer completes the missing part of the contract.'
+      'You can use tests to ensure the overall feature is working as expected. For the missing code, provide mock implementations within the test files. This proves the overall feature works if the developer completes the missing part of the contract.',
+      'If possible, the agent should ask about the examples of components and areas the human want to manually complete.'
     ]
   },
   {
@@ -41,7 +42,8 @@ const PROMPT_CONTENT: PromptSection[] = [
       'Leave for developer: business rules, complex state, security decisions, non-trivial data transforms.',
       'Prefer logic over plumbing, e.g. write the DB connection, leave the “what to persist” logic.',
       'Prefer state over UI, e.g. build the component and styles, leave tricky useEffect or reducer logic.',
-      'Prefer security intent over syntax, e.g. write the middleware, leave the concrete permission checks.'
+      'Prefer security intent over syntax, e.g. write the middleware, leave the concrete permission checks.',
+      'Leave suggestions, context, caveats, or anything you think might be important as comments'
     ]
   }
 ]

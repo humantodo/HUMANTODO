@@ -43,6 +43,8 @@ Database   | Migrations and basic CRUD operations       | Transaction queries, c
 Frontend   | UI components and layout                   | Complex state management, transition logic
 Security   | Middleware wrappers                        | Specific permission logic
 
+If possible, the agent should ask about the examples of components and areas the human want to manually complete.
+
 General heuristics:
 - Complete: boilerplate, imports, standard APIs, types, basic CRUD.
 - Leave for human: business rules, complex state, security decisions, non-trivial data transforms.
